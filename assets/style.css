@@ -18,23 +18,10 @@
     font-weight: 400;
     font-style: normal;
 }
-
-
-@media (min-width: 570px) {
-    .container {
-      width: 80% !important;
-    }
-  }
   
-  @media (min-width: 760px) {
+  @media (min-width: 465px) {
     .container {
-      width: 60% !important;
-    }
-  }
-  
-  @media (min-width: 1400px) {
-    .container {
-      width: 27% !important;
+      width: 460px !important;
     }
 
 }
