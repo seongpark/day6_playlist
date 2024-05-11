@@ -5,168 +5,192 @@
             "year": 2019,
             "album": "The Book of Us : Gravity",
             "cover": "assets/img/album/tbug.png",
-            "keywords": ["흥을 불러오는", "사랑에 빠졌을 때", "첫눈에 반했을 때", "신나게"]
+            "keywords": ["흥을 불러오는", "사랑에 빠졌을 때", "첫눈에 반했을 때", "신나게"],
+            "id" : "vnS_jn2uibs"
         },
         {
             "title": "예뻤어",
             "year": 2017,
             "album": "Every DAY6 February",
             "cover": "assets/img/album/edf.png",
-            "keywords": ["감성을 타고 싶다면", "이별 후", "잔잔한/슬픈", "벅차오르는"]
+            "keywords": ["감성을 타고 싶다면", "이별 후", "잔잔한/슬픈", "벅차오르는"],
+            "id" : "BS7tz2rAOSA"
         },
         {
             "title": "Welcome to the Show",
             "year": 2024,
             "album": "Fourever",
             "cover": "assets/img/album/f.png",
-            "keywords": ["감성을 타고 싶다면", "첫눈에 반했을 때", "벅차오르는"]
+            "keywords": ["감성을 타고 싶다면", "첫눈에 반했을 때", "벅차오르는"],
+            "id" : "RowlrvmyFEk"
         },
         {
             "title": "Love me or Leave me",
             "year": 2020,
             "album": "The Book of Us : The Demon",
             "cover": "assets/img/album/tbud.png",
-            "keywords": ["흥을 불러오는", "권태기를 극복하기", "마라맛"]
+            "keywords": ["흥을 불러오는", "권태기를 극복하기", "마라맛"],
+            "id" : "LlFcvjDBSCU"
         },
         {
             "title": "HAPPY",
             "year": 2024,
             "album": "Fourevern",
             "cover": "assets/img/album/f.png",
-            "keywords": ["흥을 불러오는", "신나게"]
+            "keywords": ["흥을 불러오는", "신나게"],
+            "id" : "2o1zdX72400"
         },
         {
             "title": "Congratulations",
             "year": 2015,
             "album": "The Day",
             "cover": "assets/img/album/td.png",
-            "keywords": ["흥을 불러오는", "이별 후", "벅차오르는"]
+            "keywords": ["흥을 불러오는", "이별 후", "벅차오르는"],
+            "id" : "x3sFsHrUyLQ"
         },
         {
             "title": "Zombie",
             "year": 2019,
             "album": "The Book of Us : The Demon",
             "cover": "assets/img/album/tbud.png",
-            "keywords": ["감성을 타고 싶다면", "이별 후", "잔잔한/슬픈"]
+            "keywords": ["감성을 타고 싶다면", "이별 후", "잔잔한/슬픈"],
+            "id" : "k8gx-C7GCGU"
         },
         {
             "title": "놓아 놓아 놓아",
             "year": 2016,
             "album": "DAYDREAM",
             "cover": "assets/img/album/dd.png",
-            "keywords": ["감성을 타고 싶다면", "이별 후", "벅차오르는"]
+            "keywords": ["감성을 타고 싶다면", "이별 후", "벅차오르는"],
+            "id" : "1-1TGNmQqZ"
         },
         {
             "title": "좋아합니다",
             "year": 2017,
             "album": "MOONRISE",
             "cover": "assets/img/album/mr.png",
-            "keywords": ["감성을 타고 싶다면", "사랑에 빠졌을 때", "첫눈에 반했을 때", "벅차오르는"]
+            "keywords": ["감성을 타고 싶다면", "사랑에 빠졌을 때", "첫눈에 반했을 때", "벅차오르는"],
+            "id" : "jAI_Jo-JtPQ"
         },
         {
             "title": "행복했던 날들이었다",
             "year": 2018,
             "album": "Remember Us : Youth Part 2",
             "cover": "assets/img/album/ruyp.png",
-            "keywords": ["흥을 불러오는", "이별 후", "신나게"]
+            "keywords": ["흥을 불러오는", "이별 후", "신나게"],
+            "id" : "1nk5O__ALI8"
         },
         {
             "title": "Shoot Me",
             "year": 2018,
             "album": "Shoot Me : Youth Part 1",
             "cover": "assets/img/album/smyp.png",
-            "keywords": ["흥을 불러오는", "권태기를 극복하기", "마라맛"]
+            "keywords": ["흥을 불러오는", "권태기를 극복하기", "마라맛"],
+            "id" : "g2X2LdJAIpU"
         },
         {
             "title": "그게 너의 사랑인지 몰랐어",
             "year": 2024,
             "album": "Fourever",
             "cover": "assets/img/album/f.png",
-            "keywords": ["감성을 타고 싶다면", "권태기를 극복하기", "이별 후" , "잔잔한/슬픈"]
+            "keywords": ["감성을 타고 싶다면", "권태기를 극복하기", "이별 후" , "잔잔한/슬픈"],
+            "id" : "1SUou1akUfM"
         },
         {
             "title": "뚫고 지나가요",
             "year": 2021,
             "album": "Right Through Me",
             "cover": "assets/img/album/rtm.png",
-            "keywords": ["흥을 불러오는", "권태기를 극복하기", "신나게"]
+            "keywords": ["흥을 불러오는", "권태기를 극복하기", "신나게"],
+            "id" : "ZbIeVvPg7CQ"
         },
         {
             "title": "Sweet Chaos",
             "year": 2018,
             "album": "The Book of Us : Entropy",
             "cover": "assets/img/album/tbue.png",
-            "keywords": ["흥을 불러오는", "첫눈에 반했을 때", "마라맛"]
+            "keywords": ["흥을 불러오는", "첫눈에 반했을 때", "마라맛"],
+            "id" : "CWUGikRxGQs"
         },
         {
             "title": "어쩌다보니",
             "year": 2018,
             "album": "Shoot Me : Youth Part 1",
             "cover": "assets/img/album/smyp.png",
-            "keywords": ["흥을 불러오는", "이별 후", "벅차오르는"]
+            "keywords": ["흥을 불러오는", "이별 후", "벅차오르는"],
+            "id" : "S8bQtknSNW0"
         },
         {
             "title": "I Loved You",
             "year": 2017,
             "album": "Every DAY6 September",
             "cover": "assets/img/album/eds.png",
-            "keywords": ["감성을 타고 싶다면", "이별 후", "잔잔한/슬픈"]
+            "keywords": ["감성을 타고 싶다면", "이별 후", "잔잔한/슬픈"],
+            "id" : "EwLMA5XYnKI"
         },
         {
             "title": "Loveholic",
             "year": 2024,
             "album": "Psycho, Loveholic",
             "cover": "assets/img/album/pl.png",
-            "keywords": ["흥을 불러오는", "이별 후", "신나게"]
+            "keywords": ["흥을 불러오는", "이별 후", "신나게"],
+            "id" : "Wk3CmGLfbuA"
         },
         {
             "title": "사랑하게 해주라",
             "year": 2024,
             "album": "Fourever",
             "cover": "assets/img/album/f.png",
-            "keywords": ["감성을 타고 싶다면", "첫눈에 반했을 때", "잔잔한/슬픈"]
+            "keywords": ["감성을 타고 싶다면", "첫눈에 반했을 때", "잔잔한/슬픈"],
+            "id" : "0JC4cm2fXsc"
         },
         {
             "title": "나만 슬픈 엔딩",
             "year": 2024,
             "album": "Fourever",
             "cover": "assets/img/album/f.png",
-            "keywords": ["흥을 불러오는", "권태기를 극복하기", "마라맛"]
+            "keywords": ["흥을 불러오는", "권태기를 극복하기", "마라맛"],
+            "id" : "rBZi0LKBfBE"
         },
         {
             "title": "장난 아닌데",
             "year": 2017,
             "album": "Every DAY6 April",
             "cover": "assets/img/album/da.png",
-            "keywords": ["흥을 불러오는", "첫눈에 반했을 때", "신나게"]
+            "keywords": ["흥을 불러오는", "첫눈에 반했을 때", "신나게"],
+            "id" : "ZmHQbzbM8pI"
         },
         {
             "title": "널 제외한 나의 뇌",
             "year": 2024,
             "album": "Fourever",
             "cover": "assets/img/album/f.png",
-            "keywords": ["흥을 불러오는", "이별 후", "권태기를 극복하기", "마라맛"]
+            "keywords": ["흥을 불러오는", "이별 후", "권태기를 극복하기", "마라맛"],
+            "id" : "Kf6bF-69JF0"
         },
         {
             "title": "The Power of Love",
             "year": 2024,
             "album": "Fourever",
             "cover": "assets/img/album/f.png",
-            "keywords": ["흥을 불러오는", "고마움을 표시하기", "신나게"]
+            "keywords": ["흥을 불러오는", "고마움을 표시하기", "신나게"],
+            "id" : "dRF_NIsIoUs"
         },
         {
             "title": "You make Me",
             "year": 2021,
             "album": "The Book of Us: Negentropy",
             "cover": "assets/img/album/tbun.png",
-            "keywords": ["감성을 타고 싶다면", "고마움을 표시하기", "벅차오르는"]
+            "keywords": ["감성을 타고 싶다면", "고마움을 표시하기", "벅차오르는"],
+            "id" : "Pk-mttUPGnM"
         },
         {
             "title": "반드시 웃는다",
             "year": 2017,
             "album": "SUNRISE",
             "cover": "assets/img/album/sr.png",
-            "keywords": ["감성을 타고 싶다면", "이별 후", "벅차오르는"]
+            "keywords": ["감성을 타고 싶다면", "이별 후", "벅차오르는"],
+            "id" : "g4V36AfI4Ng"
         },
         {
             "title": "그렇더라고요",
@@ -373,9 +397,9 @@
         },
         {
             "title": "나 홀로 집에",
-            "year": 2018,
-            "album": "Remember Us : Youth Part 2",
-            "cover": "assets/img/album/ruyp.png",
+            "year": 2021,
+            "album": "Right Through Me",
+            "cover": "assets/img/album/rtm.png",
             "keywords": ["흥을 불러오는", "이별 후", "신나게"]
         },
         {
