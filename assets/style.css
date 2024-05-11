@@ -19,6 +19,26 @@
     font-style: normal;
 }
 
+
+@media (min-width: 570px) {
+    .container {
+      width: 80% !important;
+    }
+  }
+  
+  @media (min-width: 760px) {
+    .container {
+      width: 60% !important;
+    }
+  }
+  
+  @media (min-width: 1400px) {
+    .container {
+      width: 27% !important;
+    }
+
+}
+
 body {
     background-color: #fafafa!important;
     font-family: 'Pretendard-Regular'!important;
