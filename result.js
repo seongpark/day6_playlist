@@ -121,7 +121,10 @@ function refreshPage() {
 }
 
 function playVideoWithId(videoId, button) {
-    let isPlaying = false; 
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        window.location.href = 'https://www.youtube.com/watch?v=' + videoId;
+    } else {
+        let isPlaying = false; 
         var tag = document.createElement("script");
         tag.src = "https://www.youtube.com/iframe_api";
         var firstScriptTag = document.getElementsByTagName("script")[0];
@@ -166,5 +169,8 @@ function playVideoWithId(videoId, button) {
             });
         };
 
-    button.onclick = refreshPage;
+        if (!/iPhone|iPod/.test(navigator.userAgent)) {
+            button.onclick = refreshPage;
+        }
+    }
 }
