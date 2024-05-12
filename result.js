@@ -119,7 +119,7 @@ let currentPlayerId;
 function refreshPage() {
     location.reload();
 }
-
+  
 function playVideoWithId(videoId, button) {
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         window.location.href = 'https://www.youtube.com/watch?v=' + videoId;

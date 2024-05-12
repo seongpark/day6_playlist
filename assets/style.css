@@ -93,3 +93,12 @@ body {
     color: #D8D8D8;
     font-size: 27px;
 }
+
+.recent {
+    width: 100%;
+    padding-top: 9px;
+    padding-bottom: 15px;
+    background-color: #50C9C3;
+    color: white;
+    border-radius: 15px;
+}
