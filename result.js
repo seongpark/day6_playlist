@@ -190,19 +190,28 @@ document.getElementById("makepli").addEventListener("click", async function () {
   const allFilteredSongs = [...filteredSongs, ...filteredSongsByAnyKeyword2Or3];
 
   if (allFilteredSongs.length > 1) {
-    // 첫 번째 영상 ID 가져오기
-    const firstVideoId = allFilteredSongs[0].id;
+    // 곡 목록을 최대 50곡씩 나누기
+    const chunkSize = 50;
+    const songChunks = [];
+    for (let i = 0; i < allFilteredSongs.length; i += chunkSize) {
+      songChunks.push(allFilteredSongs.slice(i, i + chunkSize));
+    }
 
-    // 이후 영상 ID들을 "&video_ids=" 뒤에 추가
-    const otherVideoIds = allFilteredSongs
-      .slice(1)
-      .map((song) => song.id)
-      .join(",");
+    // 50곡씩 나누어 창을 열기
+    songChunks.forEach((chunk, index) => {
+      // 첫 번째 영상 ID 가져오기
+      const firstVideoId = chunk[0].id;
+      const otherVideoIds = chunk
+        .slice(1)
+        .map((song) => song.id)
+        .join(",");
+      const playlistUrl = `https://www.youtube.com/watch_videos?video_ids=${firstVideoId},${otherVideoIds}`;
 
-    // YouTube 즉석 플레이리스트 URL
-    const playlistUrl = `https://www.youtube.com/watch_videos?video_ids=${firstVideoId},${otherVideoIds}`;
-
-    window.open(playlistUrl, "_blank"); // 새 탭에서 플레이리스트 열기
+      // 새 창 열기
+      setTimeout(() => {
+        window.open(playlistUrl, "_blank"); // 새 탭에서 플레이리스트 열기
+      }, index * 1000); // 1초 간격으로 창 열기 (팝업 차단 방지)
+    });
   } else if (allFilteredSongs.length === 1) {
     // 노래가 1개만 있으면 단일 영상만 열기
     const singleVideoUrl = `https://www.youtube.com/watch?v=${allFilteredSongs[0].id}`;
