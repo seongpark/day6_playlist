@@ -2,48 +2,52 @@
 const urlParams = new URLSearchParams(window.location.search);
 const keywords = [];
 for (let i = 1; i <= 3; i++) {
-    const keyword = urlParams.get(`keyword${i}`);
-    if (keyword) {
-        keywords.push(keyword);
-    }
+  const keyword = urlParams.get(`keyword${i}`);
+  if (keyword) {
+    keywords.push(keyword);
+  }
 }
 
 //일치하는 키워드만 필터링
 async function fetchSongs() {
-    const response = await fetch('song.json');
-    const data = await response.json();
-    return data.songs;
+  const response = await fetch("song.json");
+  const data = await response.json();
+  return data.songs;
 }
 
 async function filterSongsByAllKeywords(keywords) {
-    const songs = await fetchSongs();
-    return songs.filter(song => keywords.every(keyword => song.keywords.includes(keyword)));
+  const songs = await fetchSongs();
+  return songs.filter((song) =>
+    keywords.every((keyword) => song.keywords.includes(keyword))
+  );
 }
 
 async function filterSongsByAnyKeyword2Or3(keywords) {
-    const songs = await fetchSongs();
-    return songs.filter(song => keywords.some(keyword => song.keywords.includes(keyword)));
+  const songs = await fetchSongs();
+  return songs.filter((song) =>
+    keywords.some((keyword) => song.keywords.includes(keyword))
+  );
 }
 
 //키워드 출력
 async function displayFilteredSongs() {
-    const songDetail = document.getElementById("songDetail");
-    const similarDetail = document.getElementById("similarDetail");
-    const songDetailAlert = document.getElementById("songDetailAlert");
-    
-    songDetailAlert.style.display = "none";
+  const songDetail = document.getElementById("songDetail");
+  const similarDetail = document.getElementById("similarDetail");
+  const songDetailAlert = document.getElementById("songDetailAlert");
 
-    //완전 일치하는 노래
-    const filteredSongs = await filterSongsByAllKeywords(keywords);
-    const songListContainer = document.getElementById('songList');
-    songListContainer.innerHTML = ""; 
-    if (filteredSongs.length > 0) {
-        songDetail.style.display = "block";
+  songDetailAlert.style.display = "none";
 
-        filteredSongs.forEach(song => {
-            const songDiv = document.createElement('div');
-            songDiv.classList.add('song-list', 'mb-3');
-            songDiv.innerHTML = `
+  //완전 일치하는 노래
+  const filteredSongs = await filterSongsByAllKeywords(keywords);
+  const songListContainer = document.getElementById("songList");
+  songListContainer.innerHTML = "";
+  if (filteredSongs.length > 0) {
+    songDetail.style.display = "block";
+
+    filteredSongs.forEach((song) => {
+      const songDiv = document.createElement("div");
+      songDiv.classList.add("song-list", "mb-3");
+      songDiv.innerHTML = `
             <div style="display: flex; align-items: center;">
                 <img src="${song.cover}" alt="${song.title} 앨범 커버" srcset="" class="album" />
                 <div style="margin-left: 10px;">
@@ -55,26 +59,28 @@ async function displayFilteredSongs() {
             <div style="margin-left: auto;">
                 <button onclick="playVideoWithId('${song.id}', this)" class="play"><i class="fa-solid fa-play"></i></button>
             </div>
-        `;        
-            songListContainer.appendChild(songDiv);
-        });
-    } else {
-        songDetail.style.display = "none";
-        songDetailAlert.style.display = "block";
-    }
+        `;
+      songListContainer.appendChild(songDiv);
+    });
+  } else {
+    songDetail.style.display = "none";
+    songDetailAlert.style.display = "block";
+  }
 
-    //비슷한 노래
-    const filteredSongsByAnyKeyword2Or3 = await filterSongsByAnyKeyword2Or3(keywords.slice(1));
-    const similarSongContainer = document.getElementById('similarSong');
-    similarSongContainer.innerHTML = ""; 
+  //비슷한 노래
+  const filteredSongsByAnyKeyword2Or3 = await filterSongsByAnyKeyword2Or3(
+    keywords.slice(1)
+  );
+  const similarSongContainer = document.getElementById("similarSong");
+  similarSongContainer.innerHTML = "";
 
-    if (filteredSongsByAnyKeyword2Or3.length > 0) {
-        similarDetail.style.display = "block";
+  if (filteredSongsByAnyKeyword2Or3.length > 0) {
+    similarDetail.style.display = "block";
 
-        filteredSongsByAnyKeyword2Or3.forEach(song => {
-            const songDiv = document.createElement('div');
-            songDiv.classList.add('song-list', 'mb-3');
-            songDiv.innerHTML = `
+    filteredSongsByAnyKeyword2Or3.forEach((song) => {
+      const songDiv = document.createElement("div");
+      songDiv.classList.add("song-list", "mb-3");
+      songDiv.innerHTML = `
             <div style="display: flex; align-items: center;">
                 <img src="${song.cover}" alt="${song.title} 앨범 커버" srcset="" class="album" />
                 <div style="margin-left: 10px;">
@@ -86,91 +92,122 @@ async function displayFilteredSongs() {
             <div style="margin-left: auto;">
                 <button onclick="playVideoWithId('${song.id}', this)" class="play"><i class="fa-solid fa-play"></i></button>
             </div>
-        `;        
-            similarSongContainer.appendChild(songDiv);
-        });
-    } else {
-        similarDetail.style.display = "none";
-    }
-    
-    //갯수/시간 표시하는 부분
-    const countSongs = document.getElementById("count");
-    const countTime = document.getElementById("time");
-    const value =  filteredSongsByAnyKeyword2Or3.length + filteredSongs.length;
+        `;
+      similarSongContainer.appendChild(songDiv);
+    });
+  } else {
+    similarDetail.style.display = "none";
+  }
 
-    countSongs.innerHTML = value;
+  //갯수/시간 표시하는 부분
+  const countSongs = document.getElementById("count");
+  const countTime = document.getElementById("time");
+  const value = filteredSongsByAnyKeyword2Or3.length + filteredSongs.length;
 
-    //시간 계산
-    const time = value * 3;
-    if(time > 60) {
-        const displayTime = Math.round(time / 60);
-        countTime.innerHTML = displayTime + "시간";
-    }else {
-        countTime.innerHTML = time + "분";
-    }
+  countSongs.innerHTML = value;
+
+  //시간 계산
+  const time = value * 3;
+  if (time > 60) {
+    const displayTime = Math.round(time / 60);
+    countTime.innerHTML = displayTime + "시간";
+  } else {
+    countTime.innerHTML = time + "분";
+  }
 }
 
-displayFilteredSongs(); 
+displayFilteredSongs();
 
 //유튜브 영상 출력
 let player;
-let currentPlayerId; 
+let currentPlayerId;
 
 function refreshPage() {
-    location.reload();
+  location.reload();
 }
-  
+
 function playVideoWithId(videoId, button) {
-    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        window.location.href = 'https://www.youtube.com/watch?v=' + videoId;
-    } else {
-        let isPlaying = false; 
-        var tag = document.createElement("script");
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName("script")[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    window.location.href = "https://www.youtube.com/watch?v=" + videoId;
+  } else {
+    let isPlaying = false;
+    var tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        function onPlayerReady(event) {
-            event.target.setPlaybackQuality("small");
-            player = event.target;
-            button.innerHTML = `<i class="fa-solid fa-pause"></i>`;
-            currentPlayerId = button.id;
-            isPlaying = true;
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING) {
-                isPlaying = true;
-            } else {
-                isPlaying = false;
-            }
-        }
-
-        window.onYouTubeIframeAPIReady = function () {
-            player = new YT.Player("player", {
-                height: "0",
-                width: "0",
-                videoId: videoId,
-                playerVars: {
-                    autoplay: 1,
-                    controls: 0,
-                    showinfo: 0,
-                    modestbranding: 1,
-                    loop: 1,
-                    fs: 0,
-                    cc_load_policy: 0,
-                    iv_load_policy: 3,
-                    autohide: 0,
-                },
-                events: {
-                    onReady: onPlayerReady,
-                    onStateChange: onPlayerStateChange,
-                },
-            });
-        };
-
-        if (!/iPhone|iPod/.test(navigator.userAgent)) {
-            button.onclick = refreshPage;
-        }
+    function onPlayerReady(event) {
+      event.target.setPlaybackQuality("small");
+      player = event.target;
+      button.innerHTML = `<i class="fa-solid fa-pause"></i>`;
+      currentPlayerId = button.id;
+      isPlaying = true;
     }
+
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING) {
+        isPlaying = true;
+      } else {
+        isPlaying = false;
+      }
+    }
+
+    window.onYouTubeIframeAPIReady = function () {
+      player = new YT.Player("player", {
+        height: "0",
+        width: "0",
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          showinfo: 0,
+          modestbranding: 1,
+          loop: 1,
+          fs: 0,
+          cc_load_policy: 0,
+          iv_load_policy: 3,
+          autohide: 0,
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange,
+        },
+      });
+    };
+
+    if (!/iPhone|iPod/.test(navigator.userAgent)) {
+      button.onclick = refreshPage;
+    }
+  }
 }
+
+document.getElementById("makepli").addEventListener("click", async function () {
+  const filteredSongs = await filterSongsByAllKeywords(keywords);
+  const filteredSongsByAnyKeyword2Or3 = await filterSongsByAnyKeyword2Or3(
+    keywords.slice(1)
+  );
+
+  const allFilteredSongs = [...filteredSongs, ...filteredSongsByAnyKeyword2Or3];
+
+  if (allFilteredSongs.length > 1) {
+    // 첫 번째 영상 ID 가져오기
+    const firstVideoId = allFilteredSongs[0].id;
+
+    // 이후 영상 ID들을 "&video_ids=" 뒤에 추가
+    const otherVideoIds = allFilteredSongs
+      .slice(1)
+      .map((song) => song.id)
+      .join(",");
+
+    // YouTube 즉석 플레이리스트 URL
+    const playlistUrl = `https://www.youtube.com/watch_videos?video_ids=${firstVideoId},${otherVideoIds}`;
+
+    window.open(playlistUrl, "_blank"); // 새 탭에서 플레이리스트 열기
+  } else if (allFilteredSongs.length === 1) {
+    // 노래가 1개만 있으면 단일 영상만 열기
+    const singleVideoUrl = `https://www.youtube.com/watch?v=${allFilteredSongs[0].id}`;
+    window.open(singleVideoUrl, "_blank");
+  } else {
+    alert("선택된 키워드에 해당하는 노래가 없습니다!");
+  }
+});
