@@ -1274,7 +1274,7 @@
       "title": "메이플라떼",
       "year": 2025,
       "album": "디어엠 OST Part.1",
-      "cover": "assets/img/album/dearm.webp",
+      "cover": "assets/img/album/mp.jpg",
       "keywords": [
         "흥을 불러오는",
         "첫눈에 반했을 때",
@@ -1287,7 +1287,7 @@
       "title": "Maybe Tomorrow",
       "year": 2025,
       "album": "Maybe Tomorrow",
-      "cover": "assets/img/album/mt.webp",
+      "cover": "assets/img/album/mt.jpg",
       "keywords": ["감성을 타고 싶다면", "벅차오르는", "힘을 얻기"],
       "id": "I1gI9ZCcSJs"
     },
@@ -1295,7 +1295,7 @@
       "title": "끝났지",
       "year": 2025,
       "album": "Maybe Tomorrow",
-      "cover": "assets/img/album/mt.webp",
+      "cover": "assets/img/album/mt.jpg",
       "keywords": ["흥을 불러오는", "권태기를 극복하기", "마라맛"],
       "id": "DnR8pZ7YO6o"
     }
