@@ -1,4 +1,4 @@
-//GET 키워드 받아오기
+// GET 키워드 받아오기
 const urlParams = new URLSearchParams(window.location.search);
 const keywords = [];
 for (let i = 1; i <= 3; i++) {
@@ -8,28 +8,41 @@ for (let i = 1; i <= 3; i++) {
   }
 }
 
-//일치하는 키워드만 필터링
+// 배열 랜덤 섞기 함수
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// 노래 데이터 가져오기
 async function fetchSongs() {
   const response = await fetch("song.json");
   const data = await response.json();
   return data.songs;
 }
 
+// 완전 일치 키워드로 필터링 + 랜덤 정렬
 async function filterSongsByAllKeywords(keywords) {
   const songs = await fetchSongs();
-  return songs.filter((song) =>
+  const filtered = songs.filter((song) =>
     keywords.every((keyword) => song.keywords.includes(keyword))
   );
+  return shuffleArray(filtered);
 }
 
+// 일부 키워드(2,3번)로 필터링 + 랜덤 정렬
 async function filterSongsByAnyKeyword2Or3(keywords) {
   const songs = await fetchSongs();
-  return songs.filter((song) =>
+  const filtered = songs.filter((song) =>
     keywords.some((keyword) => song.keywords.includes(keyword))
   );
+  return shuffleArray(filtered);
 }
 
-//키워드 출력
+// 필터된 노래들 출력
 async function displayFilteredSongs() {
   const songDetail = document.getElementById("songDetail");
   const similarDetail = document.getElementById("similarDetail");
@@ -37,10 +50,10 @@ async function displayFilteredSongs() {
 
   songDetailAlert.style.display = "none";
 
-  //완전 일치하는 노래
   const filteredSongs = await filterSongsByAllKeywords(keywords);
   const songListContainer = document.getElementById("songList");
   songListContainer.innerHTML = "";
+
   if (filteredSongs.length > 0) {
     songDetail.style.display = "block";
 
@@ -48,18 +61,18 @@ async function displayFilteredSongs() {
       const songDiv = document.createElement("div");
       songDiv.classList.add("song-list", "mb-3");
       songDiv.innerHTML = `
-            <div style="display: flex; align-items: center;">
-                <img src="${song.cover}" alt="${song.title} 앨범 커버" srcset="" class="album" />
-                <div style="margin-left: 10px;">
-                    <span style="font-size: 18px;" class="bold">${song.title}</span>
-                    <br />
-                    <span style="font-size: 13px;">${song.album} · ${song.year}</span>
-                </div>
-            </div>
-            <div style="margin-left: auto;">
-                <button onclick="playVideoWithId('${song.id}', this)" class="play"><i class="fa-solid fa-play"></i></button>
-            </div>
-        `;
+        <div style="display: flex; align-items: center;">
+          <img src="${song.cover}" alt="${song.title} 앨범 커버" class="album" />
+          <div style="margin-left: 10px;">
+            <span style="font-size: 18px;" class="bold">${song.title}</span>
+            <br />
+            <span style="font-size: 13px;">${song.album} · ${song.year}</span>
+          </div>
+        </div>
+        <div style="margin-left: auto;">
+          <button onclick="playVideoWithId('${song.id}', this)" class="play"><i class="fa-solid fa-play"></i></button>
+        </div>
+      `;
       songListContainer.appendChild(songDiv);
     });
   } else {
@@ -67,7 +80,6 @@ async function displayFilteredSongs() {
     songDetailAlert.style.display = "block";
   }
 
-  //비슷한 노래
   const filteredSongsByAnyKeyword2Or3 = await filterSongsByAnyKeyword2Or3(
     keywords.slice(1)
   );
@@ -81,36 +93,33 @@ async function displayFilteredSongs() {
       const songDiv = document.createElement("div");
       songDiv.classList.add("song-list", "mb-3");
       songDiv.innerHTML = `
-            <div style="display: flex; align-items: center;">
-                <img src="${song.cover}" alt="${song.title} 앨범 커버" srcset="" class="album" />
-                <div style="margin-left: 10px;">
-                    <span style="font-size: 18px;" class="bold">${song.title}</span>
-                    <br />
-                    <span style="font-size: 13px;">${song.album} · ${song.year}</span>
-                </div>
-            </div>
-            <div style="margin-left: auto;">
-                <button onclick="playVideoWithId('${song.id}', this)" class="play"><i class="fa-solid fa-play"></i></button>
-            </div>
-        `;
+        <div style="display: flex; align-items: center;">
+          <img src="${song.cover}" alt="${song.title} 앨범 커버" class="album" />
+          <div style="margin-left: 10px;">
+            <span style="font-size: 18px;" class="bold">${song.title}</span>
+            <br />
+            <span style="font-size: 13px;">${song.album} · ${song.year}</span>
+          </div>
+        </div>
+        <div style="margin-left: auto;">
+          <button onclick="playVideoWithId('${song.id}', this)" class="play"><i class="fa-solid fa-play"></i></button>
+        </div>
+      `;
       similarSongContainer.appendChild(songDiv);
     });
   } else {
     similarDetail.style.display = "none";
   }
 
-  //갯수/시간 표시하는 부분
+  // 갯수와 시간 출력
   const countSongs = document.getElementById("count");
   const countTime = document.getElementById("time");
-  const value = filteredSongsByAnyKeyword2Or3.length + filteredSongs.length;
-
+  const value = filteredSongs.length + filteredSongsByAnyKeyword2Or3.length;
   countSongs.innerHTML = value;
 
-  //시간 계산
   const time = value * 3;
   if (time > 60) {
-    const displayTime = Math.round(time / 60);
-    countTime.innerHTML = displayTime + "시간";
+    countTime.innerHTML = Math.round(time / 60) + "시간";
   } else {
     countTime.innerHTML = time + "분";
   }
@@ -118,7 +127,7 @@ async function displayFilteredSongs() {
 
 displayFilteredSongs();
 
-//유튜브 영상 출력
+// 유튜브 영상 재생
 let player;
 let currentPlayerId;
 
@@ -145,11 +154,7 @@ function playVideoWithId(videoId, button) {
     }
 
     function onPlayerStateChange(event) {
-      if (event.data == YT.PlayerState.PLAYING) {
-        isPlaying = true;
-      } else {
-        isPlaying = false;
-      }
+      isPlaying = event.data === YT.PlayerState.PLAYING;
     }
 
     window.onYouTubeIframeAPIReady = function () {
@@ -181,6 +186,7 @@ function playVideoWithId(videoId, button) {
   }
 }
 
+// 플레이리스트 버튼
 document.getElementById("makepli").addEventListener("click", async function () {
   const filteredSongs = await filterSongsByAllKeywords(keywords);
   const filteredSongsByAnyKeyword2Or3 = await filterSongsByAnyKeyword2Or3(
@@ -190,16 +196,13 @@ document.getElementById("makepli").addEventListener("click", async function () {
   const allFilteredSongs = [...filteredSongs, ...filteredSongsByAnyKeyword2Or3];
 
   if (allFilteredSongs.length > 1) {
-    // 곡 목록을 최대 50곡씩 나누기
     const chunkSize = 50;
     const songChunks = [];
     for (let i = 0; i < allFilteredSongs.length; i += chunkSize) {
       songChunks.push(allFilteredSongs.slice(i, i + chunkSize));
     }
 
-    // 50곡씩 나누어 창을 열기
     songChunks.forEach((chunk, index) => {
-      // 첫 번째 영상 ID 가져오기
       const firstVideoId = chunk[0].id;
       const otherVideoIds = chunk
         .slice(1)
@@ -207,13 +210,11 @@ document.getElementById("makepli").addEventListener("click", async function () {
         .join(",");
       const playlistUrl = `https://www.youtube.com/watch_videos?video_ids=${firstVideoId},${otherVideoIds}`;
 
-      // 새 창 열기
       setTimeout(() => {
-        window.open(playlistUrl, "_blank"); // 새 탭에서 플레이리스트 열기
-      }, index * 1000); // 1초 간격으로 창 열기 (팝업 차단 방지)
+        window.open(playlistUrl, "_blank");
+      }, index * 1000);
     });
   } else if (allFilteredSongs.length === 1) {
-    // 노래가 1개만 있으면 단일 영상만 열기
     const singleVideoUrl = `https://www.youtube.com/watch?v=${allFilteredSongs[0].id}`;
     window.open(singleVideoUrl, "_blank");
   } else {
