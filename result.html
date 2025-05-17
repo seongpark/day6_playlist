@@ -124,26 +124,17 @@
 
     <script>
       window.onload = function () {
-        // 이전 페이지가 index.html일 때만 로딩 화면을 표시
-        if (document.referrer.includes("index.html")) {
-          // 로딩 화면을 표시하는 코드
-          setTimeout(function () {
-            var loading = document.querySelector(".loading");
-            loading.style.transition = "opacity 0.5s";
-            loading.style.opacity = "0";
-            setTimeout(function () {
-              loading.style.display = "none";
-            }, 500);
-            var container = document.querySelector(".container");
-            container.style.display = "block";
-          }, 500);
-        } else {
-          // 이전 페이지가 index.html이 아니면 로딩 화면을 바로 숨기기
+        // 로딩 화면을 표시하는 코드
+        setTimeout(function () {
           var loading = document.querySelector(".loading");
-          loading.style.display = "none";
+          loading.style.transition = "opacity 0.1s";
+          loading.style.opacity = "0";
+          setTimeout(function () {
+            loading.style.display = "none";
+          }, 500);
           var container = document.querySelector(".container");
           container.style.display = "block";
-        }
+        }, 500);
       };
     </script>
 
